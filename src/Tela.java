@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Tela {
-    private JPanel painel;
     private JTextField codigo;
     private JTextField nome;
     private JRadioButton individual;
@@ -14,6 +13,7 @@ public class Tela {
     private JTextField anoCpf;
     private JButton imprime;
     private JTextArea exibeDados;
+    private JPanel Painel;
     private ButtonGroup b;
 
     public Tela (){
@@ -55,6 +55,6 @@ public class Tela {
 
     }
     public JPanel getPainel(){
-        return painel;
+        return Painel;
     }
 }
