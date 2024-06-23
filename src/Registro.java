@@ -19,12 +19,11 @@ public class Registro {
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getCodigo() == cliente.getCodigo()) {
                     return false;
-                } else {
-                    lista.add(cliente);
+                }
 
                 }
             }
-        }
+        lista.add(cliente);
         return true;
     }
 
