@@ -22,6 +22,6 @@ public abstract class Cliente {
         return "Cliente{" +
                 "codigo=" + codigo +
                 ", nome='" + nome + '\'' +
-                '}';
+                "}";
     }
 }

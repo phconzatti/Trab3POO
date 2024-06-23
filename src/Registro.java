@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Registro {
-    private ArrayList<Cliente> lista;
+    private List<Cliente> lista;
 
     public Registro (){
         lista = new ArrayList<>();
     }
 
-    public boolean cadastraMidia(Cliente cliente) {
+    public boolean cadastraCliente(Cliente cliente) {
         if (lista.isEmpty()) {
             lista.add(cliente);
             clienteCadastrado();
@@ -23,12 +26,21 @@ public class Registro {
             }
             return true;
         }
+
     }
-    public void clienteCadastrado(){
-        System.out.println("Cliente cadastrado com sucesso!");
+    public String clienteCadastrado(){
+        return "Cliente cadastrado com sucesso!";
     }
 
-    public void clienteNaoCadastrado(){
-        System.out.println("Cliente não cadastrado, código repetido.");
+    public String clienteNaoCadastrado(){
+        return "Cliente não cadastrado, código repetido.";
+    }
+
+    public void organizarLista(){
+        List<Cliente> clientesOrdenados = lista.stream().sorted(Comparator.comparing(Cliente::getCodigo)).collect(Collectors.toList());
+    }
+
+    public List<Cliente> getLista() {
+        return lista;
     }
 }

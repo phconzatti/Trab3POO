@@ -16,6 +16,6 @@ public class Individual extends Cliente{
         return "Individual{" +
                 super.toString()+
                 "cpf='" + cpf + '\'' +
-                '}';
+                "}\n";
     }
 }
