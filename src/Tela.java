@@ -29,43 +29,55 @@ public class Tela {
         confirma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int codigoTexto = Integer.parseInt(codigo.getText());
-                String nomeTexto = nome.getText();
-                if (individual.isSelected()){
-                    String cpfTexto = anoCpf.getText();
-                    Individual i = new Individual(codigoTexto, nomeTexto, cpfTexto) {
-                        @Override
-                        public double calculaDesconto() {
-                            return 0;
+                try {
+                    int codigoTexto = Integer.parseInt(codigo.getText());
+                    String nomeTexto = nome.getText();
+
+                    if (individual.isSelected()) {
+                        String cpfTexto = anoCpf.getText();
+                        Individual i = new Individual(codigoTexto, nomeTexto, cpfTexto) {
+                            @Override
+                            public double calculaDesconto() {
+                                return 0;
+                            }
+                        };
+                        if (!registro.cadastraCliente(i)) {
+                            exibeDados.append("Cliente não cadastrado, código repetido.\n");
+                        } else {
+                            exibeDados.append("Cliente cadastrado com sucesso!\n");
+                            registro.cadastraCliente(i);
                         }
-                    };
-                    if (!registro.cadastraCliente(i)){
-                        exibeDados.append("Cliente não cadastrado, código repetido.\n");
-                    } else {
-                        exibeDados.append("Cliente cadastrado com sucesso!\n");
-                        registro.cadastraCliente(i);
                     }
-                }
-                if (empresa.isSelected()){
-                    int anoTexto = Integer.parseInt(anoCpf.getText());
-                    Empresarial empresa = new Empresarial(codigoTexto, nomeTexto, anoTexto);
-                    if (!registro.cadastraCliente(empresa)){
-                        exibeDados.append("Cliente não cadastrado, código repetido.\n");
-                    } else {
-                        exibeDados.append("Cliente cadastrado com sucesso!\n");
-                        registro.cadastraCliente(empresa);
+
+                    if (empresa.isSelected()) {
+                        int anoTexto = Integer.parseInt(anoCpf.getText());
+                        Empresarial empresa = new Empresarial(codigoTexto, nomeTexto, anoTexto);
+                        if (!registro.cadastraCliente(empresa)) {
+                            exibeDados.append("Cliente não cadastrado, código repetido.\n");
+                        } else {
+                            exibeDados.append("Cliente cadastrado com sucesso!\n");
+                            registro.cadastraCliente(empresa);
+                        }
                     }
+                } catch (NumberFormatException nfe){
+                    exibeDados.append("Formato errado em dado de entrada. Verificar se o código e/ou ano são números inteiros");
                 }
             }
         });
+
         imprime.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < registro.getLista().size(); i++) {
-                    exibeDados.append(registro.organizarLista().get(i).toString());
+                List<Cliente> reg = registro.organizarLista();
+                StringBuilder sb = new StringBuilder();
+                for (Cliente c : reg){
+                    sb.append(c);
                 }
+                String exibir = sb.toString();
+                exibeDados.setText(exibir);
             }
         });
+
         limpar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
