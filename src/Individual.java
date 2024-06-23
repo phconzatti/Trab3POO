@@ -10,4 +10,12 @@ public class Individual extends Cliente{
     public double calculaDesconto() {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return "Individual{" +
+                super.toString()+
+                "cpf='" + cpf + '\'' +
+                '}';
+    }
 }
