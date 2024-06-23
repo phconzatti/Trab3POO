@@ -56,14 +56,13 @@ public class Tela {
                         registro.cadastraCliente(empresa);
                     }
                 }
-                registro.organizarLista();
             }
         });
         imprime.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < registro.getLista().size(); i++) {
-                    exibeDados.append(registro.getLista().get(i).toString());
+                    exibeDados.append(registro.organizarLista().get(i).toString());
                 }
             }
         });

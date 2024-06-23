@@ -13,31 +13,24 @@ public class Registro {
     public boolean cadastraCliente(Cliente cliente) {
         if (lista.isEmpty()) {
             lista.add(cliente);
-            clienteCadastrado();
             return true;
 
         } else {
             for (int i = 0; i < lista.size(); i++) {
                 if (lista.get(i).getCodigo() == cliente.getCodigo()) {
-                    clienteNaoCadastrado();
                     return false;
+                } else {
+                    lista.add(cliente);
 
                 }
             }
-            return true;
         }
-
-    }
-    public String clienteCadastrado(){
-        return "Cliente cadastrado com sucesso!";
+        return true;
     }
 
-    public String clienteNaoCadastrado(){
-        return "Cliente não cadastrado, código repetido.";
-    }
-
-    public void organizarLista(){
+    public List<Cliente> organizarLista(){
         List<Cliente> clientesOrdenados = lista.stream().sorted(Comparator.comparing(Cliente::getCodigo)).collect(Collectors.toList());
+        return clientesOrdenados;
     }
 
     public List<Cliente> getLista() {
