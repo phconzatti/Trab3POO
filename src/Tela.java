@@ -17,6 +17,10 @@ public class Tela {
     private JButton imprime;
     private JTextArea exibeDados;
     private JPanel Painel;
+    private JLabel codigoLabel;
+    private JLabel nomeLabel;
+    private JLabel dados;
+    private JLabel anoCpfLabel;
     private ButtonGroup b;
     private Registro registro;
 
