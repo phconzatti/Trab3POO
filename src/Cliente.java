@@ -20,8 +20,7 @@ public abstract class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "codigo=" + codigo +
-                ", nome='" + nome + '\'' +
-                "}";
+                "codigo= " + codigo +
+                ", nome= " + nome + ", ";
     }
 }
