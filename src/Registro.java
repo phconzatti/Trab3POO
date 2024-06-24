@@ -28,7 +28,7 @@ public class Registro {
     }
 
     public List<Cliente> organizarLista(){
-        List<Cliente> clientesOrdenados = lista.stream().sorted(Comparator.comparing(Cliente::getCodigo).reversed()).collect(Collectors.toList());
+        List<Cliente> clientesOrdenados = lista.stream().sorted(Comparator.comparing(Cliente::getCodigo)).collect(Collectors.toList());
         return clientesOrdenados;
     }
 
